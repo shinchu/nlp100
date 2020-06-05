@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# poetry
+poetry.lock
+
+# jupyter
+.ipynb_checkpoints/
+
 # C extensions
 *.so
 
