@@ -8,6 +8,7 @@ poetry.lock
 
 # jupyter
 .ipynb_checkpoints/
+data/
 
 # C extensions
 *.so
