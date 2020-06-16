@@ -55,7 +55,7 @@ def sec13():
         f.write('\n'.join(col12))
 
 
-def sec14(file, n):
+def sec14(file, n=10):
     with open(file, 'r') as f:
         head = list(islice(f, n))
 
@@ -63,7 +63,7 @@ def sec14(file, n):
         print(line, end="")
 
 
-def sec15(file, n):
+def sec15(file, n=10):
     n_line = line_number(file)
     print(n_line - n)
 
@@ -74,7 +74,7 @@ def sec15(file, n):
         print(line, end="")
         
 
-def sec16(file, n):
+def sec16(file, n=2):
     n_line = line_number(file)
     split_lines = math.ceil(n_line / n)
 
@@ -90,6 +90,10 @@ def sec16(file, n):
 
 
 if __name__ == "__main__":
+    """
+    Run as:
+    python nlp100_2.py sec15 ../data/*.txt -n 16
+    """
 
     parser = argparse.ArgumentParser()
     parser.add_argument("section", help="section number", type=int)
