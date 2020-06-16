@@ -8,7 +8,9 @@ import argparse
 import os
 import math
 import csv
+import operator
 from itertools import islice
+from collections import Counter
 
 
 def line_number(file):
@@ -89,10 +91,48 @@ def sec16(file, n=2):
                     f_out.write("".join(list(islice(f, i * split_lines, i * split_lines + split_lines))))
 
 
+def sec17(file):
+    with open(file, 'r') as f:
+        reader = csv.reader(f, delimiter="\t")
+        rows = [row for row in reader]
+
+    # transpose
+    cols = [list(x) for x in zip(*rows)]
+
+    print('\n'.join(set(cols[0])))
+
+
+def sec18(file):
+    with open(file, 'r') as f:
+        reader = csv.reader(f, delimiter="\t")
+        rows = [row for row in reader]
+
+        for row in rows:
+            row[2] = int(row[2])
+            row[3] = int(row[3])
+
+        for line in sorted(rows, key=operator.itemgetter(2), reverse=True):
+            print(f'{line[0]}\t{line[1]}\t{line[2]}\t{line[3]}')
+
+
+def sec19(file):
+    with open(file, 'r') as f:
+        reader = csv.reader(f, delimiter="\t")
+        rows = [row for row in reader]
+
+    # transpose
+    cols = [list(x) for x in zip(*rows)]
+
+    counter = Counter(list(cols[0]))
+
+    for name, count in counter.most_common():
+        print(f'{count} {name}')
+
+
 if __name__ == "__main__":
     """
     Run as:
-    python nlp100_2.py sec15 ../data/*.txt -n 16
+    python nlp100_2.py 15 ../data/*.txt [-n 16]
     """
 
     parser = argparse.ArgumentParser()
@@ -121,6 +161,12 @@ if __name__ == "__main__":
     elif sec == 16:
         n = args.number
         sec16(file, n)
+    elif sec == 17:
+        sec17(file)
+    elif sec == 18:
+        sec18(file)
+    elif sec == 19:
+        sec19(file)
     else:
         print("Please specify a number between 10 and 19.")
         exit()
