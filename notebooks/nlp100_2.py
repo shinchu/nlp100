@@ -5,6 +5,8 @@
 #
 
 import argparse
+import os
+import math
 import csv
 from itertools import islice
 
@@ -70,6 +72,21 @@ def sec15(file, n):
 
     for line in head:
         print(line, end="")
+        
+
+def sec16(file, n):
+    n_line = line_number(file)
+    split_lines = math.ceil(n_line / n)
+
+    out_file = f"{os.path.dirname(file)}/{os.path.basename(file).split('.')[0]}"
+
+    for i in range(n):
+        with open(file, 'r') as f:
+            with open(f"{out_file}_{i+1}.txt", 'w') as f_out:
+                if i == n - 1:
+                    f_out.write("".join(list(islice(f, i * split_lines, None))))
+                else:
+                    f_out.write("".join(list(islice(f, i * split_lines, i * split_lines + split_lines))))
 
 
 if __name__ == "__main__":
@@ -97,6 +114,9 @@ if __name__ == "__main__":
     elif sec == 15:
         n = args.number
         sec15(file, n)
+    elif sec == 16:
+        n = args.number
+        sec16(file, n)
     else:
         print("Please specify a number between 10 and 19.")
         exit()
