@@ -74,7 +74,7 @@ def sec15(file, n=10):
 
     for line in head:
         print(line, end="")
-        
+
 
 def sec16(file, n=2):
     n_line = line_number(file)
@@ -138,7 +138,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("section", help="section number", type=int)
     parser.add_argument("file", help="filepath")
-    parser.add_argument("-n", "--number", help="number of lines", type=int)
+    parser.add_argument("-n", "--number", help="number of lines/divided files", type=int)
 
     args = parser.parse_args()
     sec = args.section
