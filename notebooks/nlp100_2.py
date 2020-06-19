@@ -35,6 +35,8 @@ def sec12(file):
     # transpose
     cols = [list(x) for x in zip(*rows)]
 
+    # zip(*rows)[0], zip(*rows)[1]
+
     with open('../data/col1.txt', 'w') as f:
         f.write('\n'.join(cols[0]))
 
@@ -67,12 +69,11 @@ def sec14(file, n=10):
 
 def sec15(file, n=10):
     n_line = line_number(file)
-    print(n_line - n)
 
     with open(file, 'r') as f:
-        head = list(islice(f, n_line - n, n_line))
+        tail = list(islice(f, n_line - n, n_line))
 
-    for line in head:
+    for line in tail:
         print(line, end="")
 
 
@@ -81,6 +82,10 @@ def sec16(file, n=2):
     split_lines = math.ceil(n_line / n)
 
     out_file = f"{os.path.dirname(file)}/{os.path.basename(file).split('.')[0]}"
+            
+        
+#     for i in range(0, len(file), n):
+#         file[i:i+n]
 
     for i in range(n):
         with open(file, 'r') as f:
@@ -111,6 +116,7 @@ def sec18(file):
             row[2] = int(row[2])
             row[3] = int(row[3])
 
+        # for line in sorted(rows, key=lambda x: x[2], reverse=True):  
         for line in sorted(rows, key=operator.itemgetter(2), reverse=True):
             print(f'{line[0]}\t{line[1]}\t{line[2]}\t{line[3]}')
 
@@ -132,7 +138,7 @@ def sec19(file):
 if __name__ == "__main__":
     """
     Run as:
-    python nlp100_2.py 15 ../data/*.txt [-n 16]
+    python nlp100_2.py 15 ../data/*.txt [-n 10]
     """
 
     parser = argparse.ArgumentParser()
