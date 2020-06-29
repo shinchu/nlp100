@@ -12,6 +12,7 @@ jupyter = "^1.0.0"
 jupyterlab = "^2.1.4"
 jupyterthemes = "^0.20.0"
 pandas = "^1.0.5"
+mecab-python3 = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 ptpython = "^3.0.2"
