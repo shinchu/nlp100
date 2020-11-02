@@ -16,6 +16,7 @@ mecab-python3 = "^1.0.0"
 scikit-learn = "^0.23.2"
 nltk = "^3.5"
 spacy = "^2.3.2"
+gensim = "^3.8.3"
 
 [tool.poetry.dev-dependencies]
 ptpython = "^3.0.2"
