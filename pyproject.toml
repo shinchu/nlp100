@@ -18,6 +18,8 @@ nltk = "^3.5"
 spacy = "^2.3.2"
 gensim = "^3.8.3"
 seaborn = "^0.11.0"
+torch = {url = "https://download.pytorch.org/whl/cu110/torch-1.7.0%2Bcu110-cp38-cp38-linux_x86_64.whl"}
+# torchvision = {url = "https://download.pytorch.org/whl/cu110/torchvision-0.8.1%2Bcu110-cp38-cp38-linux_x86_64.whl"}
 
 [tool.poetry.dev-dependencies]
 ptpython = "^3.0.2"
